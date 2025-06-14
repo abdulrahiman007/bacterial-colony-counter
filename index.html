@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>BACTERIAL COUNT</title>
+</head>
+<body>
+    <h2>Upload Image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Process">
+    </form>
+
+    {% if uploaded %}
+    <div style="display: flex; gap: 40px; margin-top: 20px;">
+        <div>
+            <h3>Original Image:</h3>
+            <img src="{{ url_for('static', filename='uploads/' + uploaded) }}" width="300">
+        </div>
+        <div>
+            <h3>Processed Image:</h3>
+            <img src="{{ url_for('static', filename='uploads/' + processed) }}" width="300">
+        </div>
+    </div>
+    <h3>Colonies Detected: {{ colony_count }}</h3>
+    {% endif %}
+</body>
+</html>
